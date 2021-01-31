@@ -12,6 +12,7 @@ SOURCES += \
     buch.cpp \
     karteikarte.cpp \
     lektion.cpp \
+    lueckentext.cpp \
     main.cpp \
     mainwindow.cpp \
     unit.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     buch.h \
     karteikarte.h \
     lektion.h \
+    lueckentext.h \
     mainwindow.h \
     unit.h
 
@@ -27,6 +29,7 @@ FORMS += \
     buch.ui \
     karteikarte.ui \
     lektion.ui \
+    lueckentext.ui \
     mainwindow.ui \
     unit.ui
 
