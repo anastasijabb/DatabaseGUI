@@ -57,7 +57,7 @@ void Buch::on_pushButton_clicked()
     ui->ISBN->setText("");
     ui->Titel->setText("");
     ui->Klasse->setText("");
-    ui->Verlag->setText("");
+    ui->Verlag->setText("d");
 }
 
 
