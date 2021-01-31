@@ -1,5 +1,5 @@
-#ifndef LUECKENTEXT_H
-#define LUECKENTEXT_H
+#ifndef CHOICE_H
+#define CHOICE_H
 
 #include <QDialog>
 #include <QSqlDatabase>
@@ -9,26 +9,25 @@ class QSqlRelationalDelegate;
 class QSqlTableModel;
 
 namespace Ui {
-class Lueckentext;
+class Choice;
 }
 
-class Lueckentext : public QDialog
+class Choice : public QDialog
 {
    Q_OBJECT
 
 public:
-   explicit Lueckentext(QWidget *parent = nullptr);
-   ~Lueckentext();
-
+   explicit Choice(QWidget *parent = nullptr);
+   ~Choice();
 
 private slots:
     void on_submit_clicked();
 
 private:
-   Ui::Lueckentext *ui;
+   Ui::Choice *ui;
    QSqlDatabase Database;
    QSqlRelationalDelegate *Delegate;
-   QSqlRelationalTableModel *ModelLueckentext;
+   QSqlRelationalTableModel *ModelChoice;
 };
 
-#endif // LUECKENTEXT_H
+#endif // CHOICE_H

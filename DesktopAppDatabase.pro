@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     buch.cpp \
+    choice.cpp \
     karteikarte.cpp \
     lektion.cpp \
     lueckentext.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     buch.h \
+    choice.h \
     karteikarte.h \
     lektion.h \
     lueckentext.h \
@@ -27,6 +29,7 @@ HEADERS += \
 
 FORMS += \
     buch.ui \
+    choice.ui \
     karteikarte.ui \
     lektion.ui \
     lueckentext.ui \
