@@ -20,7 +20,7 @@ Lektion::Lektion(QWidget *parent) :
 
     Database = QSqlDatabase::addDatabase("QSQLITE");
 
-    Database.setDatabaseName("C:/Users/Patrick/Desktop/testdatenbank4.db");
+    Database.setDatabaseName("C:/Users/Anastasija/Desktop/testdatenbank4.db");
 
 
     if (!Database.open()){
