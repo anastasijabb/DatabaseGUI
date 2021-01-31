@@ -43,3 +43,9 @@ void MainWindow::on_pushButton_5_clicked()
     lueckentext = new Lueckentext(this);
     lueckentext->show();
 }
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    choice = new Choice(this);
+    choice->show();
+}

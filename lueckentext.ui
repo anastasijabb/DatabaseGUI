@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="textteil1">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -33,7 +33,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="luecke1">
    <property name="geometry">
     <rect>
      <x>770</x>
@@ -43,7 +43,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="textteil2">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -53,7 +53,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="luecke2">
    <property name="geometry">
     <rect>
      <x>770</x>
@@ -63,7 +63,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="textteil3">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -73,7 +73,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="luecke3">
    <property name="geometry">
     <rect>
      <x>770</x>
@@ -83,7 +83,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
+  <widget class="QLineEdit" name="textteil4">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -93,7 +93,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="submit">
    <property name="geometry">
     <rect>
      <x>930</x>
