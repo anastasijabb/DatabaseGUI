@@ -11,9 +11,9 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlRecord>
-
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QStandardPaths>
 
 Karteikarte::Karteikarte(QWidget *parent) :
     QDialog(parent),
@@ -22,7 +22,12 @@ Karteikarte::Karteikarte(QWidget *parent) :
     ui->setupUi(this);
 
     Database = QSqlDatabase::addDatabase("QSQLITE");
-    Database.setDatabaseName("C:/Users/Patrick/Desktop/testdatenbank4.db");
+
+    QString dbpath =
+              QString("%1/testdatenbank4.db").arg(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+
+    Database.setDatabaseName(dbpath);
+
     if (!Database.open()){
         QMessageBox::critical(this, "Error", Database.lastError().text());
         return;

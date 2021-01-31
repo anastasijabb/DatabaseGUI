@@ -9,6 +9,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QStandardPaths>
 
 Buch::Buch(QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,10 @@ Buch::Buch(QWidget *parent) :
     ui->setupUi(this);
 
     Database = QSqlDatabase::addDatabase("QSQLITE");
-    Database.setDatabaseName("C:/Users/Patrick/Desktop/testdatenbank4.db");
+    QString dbpath =
+              QString("%1/testdatenbank4.db").arg(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+
+    Database.setDatabaseName(dbpath);
     if (!Database.open()){
         QMessageBox::critical(this, "Error", Database.lastError().text());
         return;
