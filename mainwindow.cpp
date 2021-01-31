@@ -37,9 +37,3 @@ void MainWindow::on_pushButton_4_clicked()
     karteikarte = new Karteikarte(this);
     karteikarte->show();
 }
-
-void MainWindow::on_pushButton_5_clicked()
-{
-    schueler = new Schueler(this);
-    schueler->show();
-}

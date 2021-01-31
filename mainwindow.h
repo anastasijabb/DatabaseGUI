@@ -6,8 +6,6 @@
 #include "unit.h"
 #include "lektion.h"
 #include "karteikarte.h"
-#include "schueler.h"
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -25,7 +23,6 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +30,5 @@ private:
     Unit *unit;
     Lektion *lektion;
     Karteikarte *karteikarte;
-    Schueler *schueler;
 };
 #endif // MAINWINDOW_H
