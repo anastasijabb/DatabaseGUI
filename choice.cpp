@@ -41,6 +41,8 @@ Choice::Choice(QWidget *parent) :
     ModelChoice->setRelation(3, QSqlRelation("Karteikarte", "ID", "WortEnglisch"));
     ModelChoice->setRelation(4, QSqlRelation("Karteikarte", "ID", "WortEnglisch"));
     ModelChoice->setJoinMode((QSqlRelationalTableModel::JoinMode) 1);
+    ModelChoice->setHeaderData(3, Qt::Horizontal, QObject::tr("Loesung 1"));
+    ModelChoice->setHeaderData(4, Qt::Horizontal, QObject::tr("Loesung 2"));
 
     ModelChoice->select();
 
@@ -108,4 +110,8 @@ void Choice::on_submit_clicked()
            qDebug() << "Fehler\n" << query.lastError();
 
     ModelChoice->select();
+    ui->aufgabe->setText("");
+    ui->radio1->setChecked(true);
+    ui->loesung1->setText("");
+    ui->loesung2->setText("");
 }
