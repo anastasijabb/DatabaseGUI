@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QStandardPaths>
 
 
 Lektion::Lektion(QWidget *parent) :
@@ -20,8 +21,11 @@ Lektion::Lektion(QWidget *parent) :
 
     Database = QSqlDatabase::addDatabase("QSQLITE");
 
-    Database.setDatabaseName("C:/Users/Anastasija/Desktop/testdatenbank4.db");
 
+    QString dbpath =
+              QString("%1/testdatenbank4.db").arg(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+
+    Database.setDatabaseName(dbpath);
 
     if (!Database.open()){
         QMessageBox::critical(this, "Error", Database.lastError().text());

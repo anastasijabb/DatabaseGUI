@@ -10,10 +10,9 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlRecord>
-
 #include <QFileDialog>
 #include <QMessageBox>
-
+#include <QStandardPaths>
 
 Unit::Unit(QWidget *parent) :
     QDialog(parent),
@@ -23,7 +22,11 @@ Unit::Unit(QWidget *parent) :
 
     Database = QSqlDatabase::addDatabase("QSQLITE");
 
-    Database.setDatabaseName("C:/Users/Anastasija/Desktop/testdatenbank4.db");
+    QString dbpath =
+              QString("%1/testdatenbank4.db").arg(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+
+
+    Database.setDatabaseName(dbpath);
 
 
     if (!Database.open()){
