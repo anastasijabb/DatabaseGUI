@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "buch.h"
 #include "unit.h"
 #include "lektion.h"
 #include "karteikarte.h"
@@ -21,7 +20,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
@@ -30,7 +28,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Buch *buch;
     Unit *unit;
     Lektion *lektion;
     Karteikarte *karteikarte;

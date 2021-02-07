@@ -50,6 +50,7 @@ Choice::Choice(QWidget *parent) :
     ui->tableViewBuch->setItemDelegate(Delegate);
 
     ui->radio1->setChecked(true);
+    ui->loesung2->setDisabled(true);
 }
 
 Choice::~Choice()
@@ -114,4 +115,24 @@ void Choice::on_submit_clicked()
     ui->radio1->setChecked(true);
     ui->loesung1->setText("");
     ui->loesung2->setText("");
+}
+
+void Choice::on_pushButton_2_clicked()
+{
+    int deleteIndex = ui->deleteRow->text().toInt();
+    ui->deleteRow->setText("");
+    ModelChoice->removeRow(deleteIndex - 1);
+    ModelChoice->select();
+}
+
+void Choice::on_radio2_clicked()
+{
+    ui->loesung2->setDisabled(false);
+}
+
+
+void Choice::on_radio1_clicked()
+{
+    ui->loesung2->setText("");
+    ui->loesung2->setDisabled(true);
 }

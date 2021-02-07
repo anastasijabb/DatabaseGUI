@@ -40,7 +40,22 @@ Karteikarte::Karteikarte(QWidget *parent) :
     ModelKarteikarte->select();
 
     ui->tableViewBuch->setModel(ModelKarteikarte);
+    ui->tableViewBuch->setColumnHidden(5, true);
+    ui->tableViewBuch->setColumnHidden(6, true);
+    ui->tableViewBuch->setColumnHidden(7, true);
+    ui->tableViewBuch->setColumnHidden(8, true);
+    ui->tableViewBuch->setColumnHidden(10, true);
     ui->tableViewBuch->setItemDelegate(Delegate);
+
+    QSqlQuery query1;
+    query1.prepare("SELECT Nummer FROM Unit");
+    if( !query1.exec() )
+           qDebug() << "Fehler\n" << query1.lastError();
+
+    while (query1.next()) {
+            ui->comboBox->addItem(query1.value(0).toString());
+         }
+
 }
 
 Karteikarte::~Karteikarte()
@@ -53,7 +68,7 @@ void Karteikarte::on_pushButton_clicked()
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO Karteikarte (WortEnglisch, WortDeutsch, BeispielsatzEnglisch, BeispielsatzDeutsch, AudioWort, AudioBeispielsatz, Wortart, Bild, Feedback) VALUES(?,?,?,?,?,?,?,?,?)" );
+    query.prepare("INSERT INTO Karteikarte (WortEnglisch, WortDeutsch, BeispielsatzEnglisch, BeispielsatzDeutsch, AudioWort, AudioBeispielsatz, Bild, Feedback) VALUES(?,?,?,?,?,?,?,?)" );
 
     QString bild_pfad = ui->label_4->text();
     QString audio_pfad = ui->label_9->text();
@@ -72,17 +87,38 @@ void Karteikarte::on_pushButton_clicked()
     QByteArray audio2ByteArray = file3.readAll();
 
     query.bindValue(0, ui->VokabelEn->text());
-    query.bindValue(1, ui->VokabelEn->text());
+    query.bindValue(1, ui->VokabelDe->text());
     query.bindValue(2, ui->BeispielEn->text());
     query.bindValue(3, ui->BeispielDe->text());
     query.bindValue(4, audioByteArray);
     query.bindValue(5, audio2ByteArray);
-    query.bindValue(6, ui->Wortart->text());
-    query.bindValue(7, bildByteArray);
-    query.bindValue(8, ui->Feedback->text());
+    query.bindValue(6, bildByteArray);
+    query.bindValue(7, ui->Feedback->text());
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();
+
+    query.prepare("SELECT ID FROM Karteikarte WHERE WortEnglisch = ? AND WortDeutsch = ?");
+    query.bindValue(0, ui->VokabelEn->text());
+    query.bindValue(1, ui->VokabelDe->text());
+    int id;
+    if( !query.exec() )
+           qDebug() << "Fehler\n" << query.lastError();
+    while (query.next()) {
+            id = query.value(0).toInt();
+         }
+
+    query.prepare("INSERT INTO LektionKarte VALUES(?,?,?,?)");
+    query.bindValue(0, id);
+    query.bindValue(1, ui->comboBox_2->currentText().toInt());
+    query.bindValue(2, ui->comboBox->currentText().toInt());
+    //query.bindValue(3, "978-3-12-835021-9");
+    query.bindValue(3, "978-3-12-835021-9");
+
+    if( !query.exec() )
+           qDebug() << "Fehler\n" << query.lastError();
+
+
 
     ModelKarteikarte->select();
 /*
@@ -99,6 +135,7 @@ void Karteikarte::on_pushButton_2_clicked()
 {
     int deleteIndex = ui->deleteRow->text().toInt();
     ui->deleteRow->setText("");
+
     ModelKarteikarte->removeRow(deleteIndex - 1);
     ModelKarteikarte->select();
 }
@@ -143,4 +180,20 @@ void Karteikarte::on_pushButton_5_clicked()
     QFile audio(file_name);
     if (!audio.open(QIODevice::ReadOnly)) return;
     QByteArray inByteArray = audio.readAll();
+}
+
+void Karteikarte::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    ui->comboBox_2->clear();
+    int unit = arg1.toInt();
+    QSqlQuery query1;
+
+    query1.prepare("SELECT Nummer FROM Lektion WHERE Unit = ?");
+    query1.bindValue(0, unit);
+    if( !query1.exec() )
+           qDebug() << "Fehler\n" << query1.lastError();
+
+    while (query1.next()) {
+            ui->comboBox_2->addItem(query1.value(0).toString());
+         }
 }

@@ -41,14 +41,20 @@ Lueckentext::Lueckentext(QWidget *parent) :
 
     ModelLueckentext->setTable("Lueckentext");
 
-    ModelLueckentext->setRelation(2, QSqlRelation("Karteikarte", "ID", "WortEnglisch"));
-    ModelLueckentext->setRelation(4, QSqlRelation("Karteikarte", "ID", "WortEnglisch"));
-    ModelLueckentext->setRelation(6, QSqlRelation("Karteikarte", "ID", "WortEnglisch"));
     ModelLueckentext->select();
 
 
     ui->tableViewBuch->setModel(ModelLueckentext);
     ui->tableViewBuch->setItemDelegate(Delegate);
+
+    QSqlQuery query1;
+    query1.prepare("SELECT Nummer FROM Unit");
+    if( !query1.exec() )
+           qDebug() << "Fehler\n" << query1.lastError();
+
+    while (query1.next()) {
+            ui->comboBox->addItem(query1.value(0).toString());
+         }
 }
 
 Lueckentext::~Lueckentext()
@@ -62,53 +68,23 @@ void Lueckentext::on_submit_clicked()
     QString luecke2 = ui->luecke2->text();
     QString luecke3 = ui->luecke3->text();
     QSqlQuery query;
-    QString id1,id2,id3;
-
-    query.prepare("SELECT ID FROM Karteikarte WHERE WortEnglisch = ?");
-    query.bindValue(0, luecke1);
-
-    if( !query.exec() )
-           qDebug() << "Fehler\n" << query.lastError();
-
-    while (query.next()) {
-            id1 = query.value(0).toString();
-         }
-
-
-    query.prepare("SELECT ID FROM Karteikarte WHERE WortEnglisch = ?");
-    query.bindValue(0, luecke2);
-
-    if( !query.exec() )
-           qDebug() << "Fehler\n" << query.lastError();
-
-    while (query.next()) {
-            id2 = query.value(0).toString();
-         }
-
-    query.prepare("SELECT ID FROM Karteikarte WHERE WortEnglisch = ?");
-    query.bindValue(0, luecke3);
-
-    if( !query.exec() )
-           qDebug() << "Fehler\n" << query.lastError();
-
-    while (query.next()) {
-            id3 = query.value(0).toString();
-         }
-
 
     QString text1 = ui->textteil1->text();
     QString text2 = ui->textteil2->text();
     QString text3 = ui->textteil3->text();
     QString text4 = ui->textteil4->text();
 
-    query.prepare("INSERT INTO Lueckentext (Textteil1, Luecke1, Textteil2, Luecke2, Textteil3, Luecke3, Textteil4) VALUES(?,?,?,?,?,?,?)");
+    query.prepare("INSERT INTO Lueckentext (Textteil1, Luecke1, Textteil2, Luecke2, Textteil3, Luecke3, Textteil4, Lektion, Unit, Buch) VALUES(?,?,?,?,?,?,?,?,?,?)");
     query.bindValue(0, text1);
-    query.bindValue(1, id1.toInt());
+    query.bindValue(1, luecke1);
     query.bindValue(2, text2);
-    query.bindValue(3, id2.toInt());
+    query.bindValue(3, luecke2);
     query.bindValue(4, text3);
-    query.bindValue(5, id3.toInt());
+    query.bindValue(5, luecke3);
     query.bindValue(6, text4);
+    query.bindValue(7, ui->comboBox_2->currentText().toInt());
+    query.bindValue(8, ui->comboBox->currentText().toInt());
+    query.bindValue(9, "978-3-12-835021-9");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();
@@ -123,4 +99,28 @@ void Lueckentext::on_submit_clicked()
     ui->luecke3->setText("");
 
 
+}
+
+void Lueckentext::on_pushButton_2_clicked()
+{
+    int deleteIndex = ui->deleteRow->text().toInt();
+    ui->deleteRow->setText("");
+    ModelLueckentext->removeRow(deleteIndex - 1);
+    ModelLueckentext->select();
+}
+
+void Lueckentext::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    ui->comboBox_2->clear();
+    int unit = arg1.toInt();
+    QSqlQuery query1;
+
+    query1.prepare("SELECT Nummer FROM Lektion WHERE Unit = ?");
+    query1.bindValue(0, unit);
+    if( !query1.exec() )
+           qDebug() << "Fehler\n" << query1.lastError();
+
+    while (query1.next()) {
+            ui->comboBox_2->addItem(query1.value(0).toString());
+         }
 }

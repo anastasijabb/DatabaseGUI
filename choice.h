@@ -24,6 +24,12 @@ public:
 private slots:
     void on_submit_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_radio2_clicked();
+
+    void on_radio1_clicked();
+
 private:
    Ui::Choice *ui;
    QSqlDatabase Database;

@@ -14,11 +14,6 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_clicked()
-{
-    buch = new Buch(this);
-    buch->show();
-}
 
 void MainWindow::on_pushButton_2_clicked()
 {

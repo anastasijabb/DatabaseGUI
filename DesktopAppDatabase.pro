@@ -9,7 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    buch.cpp \
     choice.cpp \
     karteikarte.cpp \
     lektion.cpp \
@@ -19,7 +18,6 @@ SOURCES += \
     unit.cpp
 
 HEADERS += \
-    buch.h \
     choice.h \
     karteikarte.h \
     lektion.h \
@@ -28,7 +26,6 @@ HEADERS += \
     unit.h
 
 FORMS += \
-    buch.ui \
     choice.ui \
     karteikarte.ui \
     lektion.ui \

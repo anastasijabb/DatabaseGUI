@@ -47,6 +47,8 @@ Lektion::Lektion(QWidget *parent) :
     ui->tableViewBuch->setItemDelegate(Delegate);
 }
 
+
+
 Lektion::~Lektion()
 {
     Database.close();
@@ -57,13 +59,18 @@ void Lektion::on_pushButton_clicked()
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO lektion (Nummer, Name, Film, Unit, Buch) VALUES(?, ?, ?, ?, ?)" );
+    query.prepare("INSERT INTO lektion VALUES (?,?,?,?,?)");
 
-    query.bindValue(0, ui->Nummer->text().toInt());
-    query.bindValue(1, ui->Name->text());
-    query.bindValue(2, ui->Film->text());
-    query.bindValue(3, ui->Unit->text().toInt());
-    query.bindValue(4, ui->Buch->text());
+    QString Nummer = ui->Nummer->text();
+    QString Name = ui->Name->text();
+    QString Film = ui->Film->text();
+    QString Unit = ui->Unit->text();
+
+    query.bindValue(0, Nummer.toInt());
+    query.bindValue(1, Name);
+    query.bindValue(2, Film);
+    query.bindValue(3, Unit.toInt());
+    query.bindValue(4, "978-3-12-835021-9");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();
@@ -72,11 +79,9 @@ void Lektion::on_pushButton_clicked()
     ModelLektion->select();
     ui->Nummer->setText("");
     ui->Name->setText("");
-    ui->Buch->setText("");
     ui->Unit->setText("");
     ui->Film->setText("");
 }
-
 
 
 void Lektion::on_pushButton_2_clicked()

@@ -28,6 +28,9 @@ private slots:
    void on_pushButton_4_clicked();
    void on_pushButton_5_clicked();
 
+
+   void on_comboBox_currentTextChanged(const QString &arg1);
+
 private:
    Ui::Karteikarte *ui;
    QSqlDatabase Database;

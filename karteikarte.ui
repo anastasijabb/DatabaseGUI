@@ -77,8 +77,8 @@
     <rect>
      <x>20</x>
      <y>420</y>
-     <width>151</width>
-     <height>21</height>
+     <width>261</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -101,7 +101,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>290</x>
      <y>390</y>
      <width>111</width>
      <height>20</height>
@@ -114,10 +114,10 @@
   <widget class="QLineEdit" name="VokabelDe">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>290</x>
      <y>420</y>
-     <width>151</width>
-     <height>21</height>
+     <width>241</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -142,8 +142,8 @@
     <rect>
      <x>20</x>
      <y>470</y>
-     <width>321</width>
-     <height>21</height>
+     <width>511</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -155,8 +155,8 @@
     <rect>
      <x>20</x>
      <y>520</y>
-     <width>321</width>
-     <height>21</height>
+     <width>511</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -176,37 +176,11 @@
     <string>Beispielsatz (Deutsch)</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>390</y>
-     <width>111</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wortart</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="Wortart">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>420</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>450</y>
+     <x>590</x>
+     <y>390</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -218,10 +192,10 @@
   <widget class="QLineEdit" name="Feedback">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>470</y>
-     <width>151</width>
-     <height>21</height>
+     <x>590</x>
+     <y>420</y>
+     <width>311</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -232,7 +206,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>560</y>
+     <y>570</y>
      <width>101</width>
      <height>23</height>
     </rect>
@@ -257,8 +231,8 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>610</y>
+     <x>10</x>
+     <y>640</y>
      <width>201</width>
      <height>121</height>
     </rect>
@@ -270,8 +244,8 @@
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>560</y>
+     <x>330</x>
+     <y>570</y>
      <width>161</width>
      <height>23</height>
     </rect>
@@ -283,8 +257,8 @@
   <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>630</y>
+     <x>330</x>
+     <y>640</y>
      <width>161</width>
      <height>23</height>
     </rect>
@@ -296,8 +270,8 @@
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>600</y>
+     <x>330</x>
+     <y>610</y>
      <width>241</width>
      <height>16</height>
     </rect>
@@ -309,14 +283,60 @@
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>670</y>
+     <x>330</x>
+     <y>680</y>
      <width>241</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>510</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>570</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>490</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>550</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Lektion</string>
    </property>
   </widget>
  </widget>
