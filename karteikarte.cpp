@@ -68,11 +68,15 @@ void Karteikarte::on_pushButton_clicked()
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO Karteikarte (WortEnglisch, WortDeutsch, BeispielsatzEnglisch, BeispielsatzDeutsch, AudioWort, AudioBeispielsatz, Bild, Feedback) VALUES(?,?,?,?,?,?,?,?)" );
+    query.prepare("INSERT INTO Karteikarte (WortEnglisch, WortDeutsch, BeispielsatzEnglisch, BeispielsatzDeutsch, AudioWort, AudioBeispielsatz, Bild, Feedback, Lueckentext1, Luecke, Lueckentext2) VALUES(?,?,?,?,?,?,?,?,?,?,?)" );
 
     QString bild_pfad = ui->label_4->text();
     QString audio_pfad = ui->label_9->text();
     QString audio2_pfad = ui->label_10->text();
+
+    QString textteil1 = ui->textteil1->text();
+    QString textteil2 = ui->textteil2->text();
+    QString luecke = ui->luecke->text();
 
     QFile file(bild_pfad);
     if (!file.open(QIODevice::ReadOnly)) return;
@@ -94,6 +98,9 @@ void Karteikarte::on_pushButton_clicked()
     query.bindValue(5, audio2ByteArray);
     query.bindValue(6, bildByteArray);
     query.bindValue(7, ui->Feedback->text());
+    query.bindValue(8, textteil1);
+    query.bindValue(9, luecke);
+    query.bindValue(10, textteil2);
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();
@@ -113,7 +120,7 @@ void Karteikarte::on_pushButton_clicked()
     query.bindValue(1, ui->comboBox_2->currentText().toInt());
     query.bindValue(2, ui->comboBox->currentText().toInt());
     //query.bindValue(3, "978-3-12-835021-9");
-    query.bindValue(3, "978-3-12-835021-9");
+    query.bindValue(3, "978-3-12-835020-2");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();

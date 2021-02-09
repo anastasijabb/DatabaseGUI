@@ -70,7 +70,7 @@ void Lektion::on_pushButton_clicked()
     query.bindValue(1, Name);
     query.bindValue(2, Film);
     query.bindValue(3, Unit.toInt());
-    query.bindValue(4, "978-3-12-835021-9");
+    query.bindValue(4, "978-3-12-835020-2");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();

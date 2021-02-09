@@ -45,6 +45,11 @@ Lueckentext::Lueckentext(QWidget *parent) :
 
 
     ui->tableViewBuch->setModel(ModelLueckentext);
+    ui->tableViewBuch->setColumnHidden(0, true);
+    ui->tableViewBuch->setColumnHidden(8, true);
+    ui->tableViewBuch->setColumnHidden(9, true);
+    ui->tableViewBuch->setColumnHidden(10, true);
+
     ui->tableViewBuch->setItemDelegate(Delegate);
 
     QSqlQuery query1;
@@ -84,7 +89,7 @@ void Lueckentext::on_submit_clicked()
     query.bindValue(6, text4);
     query.bindValue(7, ui->comboBox_2->currentText().toInt());
     query.bindValue(8, ui->comboBox->currentText().toInt());
-    query.bindValue(9, "978-3-12-835021-9");
+    query.bindValue(9, "978-3-12-835020-2");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();

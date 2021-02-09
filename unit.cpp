@@ -64,7 +64,7 @@ void Unit::on_pushButton_clicked()
     query.prepare("INSERT INTO unit (Nummer, Name, Buch) VALUES (?,?,?)");
     query.bindValue(0, ui->Nummer->text().toInt());
     query.bindValue(1, ui->Name->text());
-    query.bindValue(2, "978-3-12-835021-9");
+    query.bindValue(2, "978-3-12-835020-2");
 
     if( !query.exec() )
            qDebug() << "Fehler\n" << query.lastError();
