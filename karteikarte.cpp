@@ -78,6 +78,13 @@ void Karteikarte::on_pushButton_clicked()
     QString textteil2 = ui->textteil2->text();
     QString luecke = ui->luecke->text();
 
+    QString VokabelEn = ui->VokabelEn->text();
+    QString VokabelDe = ui->VokabelDe->text();
+    QString BeispielEn = ui->BeispielEn->text();
+    QString BeispielDe = ui->BeispielDe->text();
+    QString Feedback = ui->Feedback->text();
+
+
     QFile file(bild_pfad);
     if (!file.open(QIODevice::ReadOnly)) return;
     QByteArray bildByteArray = file.readAll();
@@ -90,14 +97,14 @@ void Karteikarte::on_pushButton_clicked()
     if (!file3.open(QIODevice::ReadOnly)) return;
     QByteArray audio2ByteArray = file3.readAll();
 
-    query.bindValue(0, ui->VokabelEn->text());
-    query.bindValue(1, ui->VokabelDe->text());
-    query.bindValue(2, ui->BeispielEn->text());
-    query.bindValue(3, ui->BeispielDe->text());
+    query.bindValue(0, VokabelEn);
+    query.bindValue(1, VokabelDe);
+    query.bindValue(2, BeispielEn);
+    query.bindValue(3, BeispielDe);
     query.bindValue(4, audioByteArray);
     query.bindValue(5, audio2ByteArray);
     query.bindValue(6, bildByteArray);
-    query.bindValue(7, ui->Feedback->text());
+    query.bindValue(7, Feedback);
     query.bindValue(8, textteil1);
     query.bindValue(9, luecke);
     query.bindValue(10, textteil2);
